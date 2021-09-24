@@ -9,6 +9,7 @@ import logging
 import math
 
 from homeassistant.components.recorder import history, is_entity_recorded, statistics
+from homeassistant.components.recorder.const import DOMAIN as RECORDER_DOMAIN
 from homeassistant.components.recorder.models import (
     StatisticData,
     StatisticMetaData,
@@ -405,6 +406,7 @@ def compile_statistics(  # noqa: C901
 
         # Set meta data
         meta: StatisticMetaData = {
+            "source": RECORDER_DOMAIN,
             "statistic_id": entity_id,
             "unit_of_measurement": unit,
             "has_mean": "mean" in wanted_statistics[entity_id],
